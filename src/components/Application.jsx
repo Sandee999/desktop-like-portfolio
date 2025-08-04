@@ -78,6 +78,7 @@ export default function Application({ appData, setAppsData }) {
   }, []);
 
   const onDrag = Gesture.Pan().onUpdate((event) => {
+    if(appData.isMaximized) return;
     appTop.value = event.translationY + (height - calculatedHeight) / 2;
     appLeft.value = event.translationX + (width - calculatedWidth) / 2;
   });
