@@ -39,7 +39,6 @@ export default function DockCard({ data, setData }) {
       }
       newData.forEach((value)=>value.zIndex = 40);
       newData[index].zIndex = 50;
-      // console.log(JSON.stringify(newData));
       return newData;
     });
   }

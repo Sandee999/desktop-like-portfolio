@@ -1,7 +1,9 @@
 export const AUTHOR_DATA = {
   name: 'Siddu',
-  github: 'https://github.com/siddu',
-  linkedin: 'https://www.linkedin.com/in/siddu/',
+  github: 'https://github.com/siddu2317',
+  linkedin: 'https://www.linkedin.com/in/saikrishna-siddu-3b8716256',
+  email: 'saikrishnasiddu14@gmail.com',
+  instagram: 'https://www.instagram.com/sai_krishna_siddu/',
 };
 
 export const DEFAULT_APP_DATA = [

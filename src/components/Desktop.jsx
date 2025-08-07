@@ -6,5 +6,5 @@ export default function Desktop() {
     <View className={`w-full h-full`}>
       {/* <Text>Desktop</Text> */}
     </View>
-  )
+  );
 }

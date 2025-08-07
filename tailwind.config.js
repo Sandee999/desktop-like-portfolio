@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "darkBg": "hsla(0, 0%, 85%, 1)"
+        "translucent": "hsla(0, 0%, 85%, 1)"
       },
       fontFamily: {
         // Poppins Fonts

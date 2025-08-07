@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-import fluidCursor from '@/web-hooks/use-FluidCursor';
+import fluidCursor from '@/web-hooks/useFluidCursor';
 
 const FluidCursor = () => {
   useEffect(() => {

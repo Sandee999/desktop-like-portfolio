@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Application from './Application';
+import AppFrame from './AppFrame';
 
 export default function RunApps({ appsData, setAppsData }) {
   const [runningApps, setRunningApps] = useState([]);
@@ -11,7 +11,7 @@ export default function RunApps({ appsData, setAppsData }) {
 
   return (
     <View className={`absolute w-full h-full justify-center items-center`}>
-      {(runningApps).map((app) => <Application key={app.id} appData={app} setAppsData={setAppsData} />)}
+      {(runningApps).map((app) => <AppFrame key={app.id} appData={app} setAppsData={setAppsData} />)}
     </View>
-  )
+  );
 }

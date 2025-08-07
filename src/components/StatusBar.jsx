@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { Image } from 'expo-image';
 import { VOLUME_ICONS } from '@/constants';
+import { BlurView } from 'expo-blur';
 
 export default function StatusBar() {
+  if(Platform.OS !== 'web') return null;
+  
   const [time, setTime] = useState(new Date());
   
-  // useEffect(() => setTime(new Date()) );
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   return(
-    <View className={`absolute right-4 px-4 py-2 gap-3 flex-row items-center rounded-xl bg-darkBg`}>
+    <BlurView intensity={20} className={`absolute right-4 px-4 py-2 -z-10 gap-3 flex-row items-center rounded-xl shadow-xl`}>
       <View className={`w-4 h-4 `}>
-        <Image source={require('@/assets/statusBar/wifi.png')} contentFit='contain' className={`w-full h-full`} />
+        <Image source={require('@/assets/statusBar/wifi.png')} tintColor='white' contentFit='contain' className={`w-full h-full`} />
       </View>
       <View className={`w-4 h-4 `}>
-        <Image source={VOLUME_ICONS[2]} contentFit='contain' className={`w-full h-full`} />
+        <Image source={VOLUME_ICONS[2]} tintColor='white' contentFit='contain' className={`w-full h-full`} />
       </View>
       <View>
-        <Text selectable={false} className={`font-poppinsMedium`}>{time.toTimeString().slice(0, 5)}</Text>
+        <Text selectable={false} className={`font-poppinsMedium text-white`}>{time.toTimeString().slice(0, 5)}</Text>
       </View>
-    </View>
+    </BlurView>
   );
 }
