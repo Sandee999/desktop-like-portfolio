@@ -3,9 +3,10 @@ import { TouchableOpacity, View } from 'react-native';
 import { Image } from 'expo-image';
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useGlobalContext } from '@/context/GlobalContext';
 
-export default function DockCard({ data, setData }) {
-  const index = data.id-1;
+export default function DockCard({ appData }) {
+  const { appsData, setAppsData } = useGlobalContext();
   const scale = useSharedValue(1);
   const translateY = useSharedValue(0);
 
@@ -30,7 +31,8 @@ export default function DockCard({ data, setData }) {
     });
 
   const onPress = () => {
-    setData((prevData) => {
+    setAppsData((prevData) => {
+      const index = appsData.indexOf(appData);
       const newData = [...prevData];
       if(!prevData[index].isActive){
         newData[index].isActive = true;
@@ -48,14 +50,14 @@ export default function DockCard({ data, setData }) {
         <Animated.View style={{ transform: [{ scale: scale }, { translateY: translateY }] }} className={`w-8 h-8 mx-2 justify-center items-center`}>
           <GestureDetector gesture={innerHover}>
             <TouchableOpacity activeOpacity={0.9} onPress={onPress} className={`w-full h-full`}>
-              <Image source={data.icon} className={`w-full h-full`} contentFit='contain' />
+              <Image source={appData.icon} className={`w-full h-full`} contentFit='contain' />
             </TouchableOpacity>
           </GestureDetector>
           <GestureDetector gesture={outerHover}>
             <View className={`absolute w-16 h-16 -z-10`} />
           </GestureDetector>
-          {data.isActive && data.zIndex !== 50 && <View className={`absolute -bottom-1 w-1 h-1 rounded-full bg-slate-800/70`} />}
-          {data.isActive && data.zIndex === 50 && <View className={`absolute w-10 h-10 -z-10 rounded-xl shadow`} />}
+          {appData.isActive && appData.zIndex !== 50 && <View className={`absolute -bottom-1 w-1 h-1 rounded-full bg-white/70`} />}
+          {appData.isActive && appData.zIndex === 50 && <View className={`absolute w-10 h-10 -z-10 rounded-xl shadow`} />}
         </Animated.View>
     </GestureHandlerRootView>
   );

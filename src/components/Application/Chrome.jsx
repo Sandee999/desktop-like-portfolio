@@ -24,7 +24,7 @@ export default function Chrome({ appData }) {
         {Platform.OS === 'web' ? (
           <iframe
             src={chromeLink}
-            style={{ width: '100%', height: '100%', borderWidth: 0 }}
+            className={`w-full h-full ${appData.isMaximized ? 'rounded-none' : 'rounded-b-xl'}`}
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           />
         ) : (

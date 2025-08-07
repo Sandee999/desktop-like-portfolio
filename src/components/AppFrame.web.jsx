@@ -3,11 +3,12 @@ import { View, Text, TouchableOpacity, useWindowDimensions, TouchableWithoutFeed
 import { Image } from 'expo-image';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring, withTiming, ZoomIn, ZoomOut } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useGlobalContext } from '@/context/GlobalContext';
 import Application from './Application';
 import { BlurView } from 'expo-blur';
 
-export default function AppFrame({ appData, setAppsData }) {
-  const index = appData.id-1;
+export default function AppFrame({ appData }) {
+  const { appsData, setAppsData } = useGlobalContext();
   const { width, height } = useWindowDimensions();
   const calculatedWidth = width * 0.5;
   const calculatedHeight = height * 0.6;
@@ -64,6 +65,7 @@ export default function AppFrame({ appData, setAppsData }) {
   }, [appData.zIndex]);
 
   const onClose = useMemo(() => () => setAppsData((prevData) => {
+    const index = appsData.indexOf(appData);
     const newData = [...prevData];
     newData[index].isActive = false;
     newData[index].isHidden = false;
@@ -71,18 +73,21 @@ export default function AppFrame({ appData, setAppsData }) {
   }), [appData]);
 
   const onHide = useMemo(() => () => setAppsData((prevData) => {
+    const index = appsData.indexOf(appData);
     const newData = [...prevData];
     newData[index].isHidden = true;
     return newData;
   }), [appData]);
 
   const onMaximize = useMemo(() => () => setAppsData((prevData) => {
+    const index = appsData.indexOf(appData);
     const newData = [...prevData];
     newData[index].isMaximized = !prevData[index].isMaximized;
     return newData;
   }), [appData]);
 
   const onAppPress = useCallback(() => {
+    const index = appsData.indexOf(appData);
     setAppsData((prevData) => {
       const newData = [...prevData];
       newData.forEach((value) => value.zIndex = 40);
@@ -93,14 +98,11 @@ export default function AppFrame({ appData, setAppsData }) {
 
   const updatePosition = (event) => {
     if(appWidth.value === width && appHeight.value === height) return;
-
-      const Spring_config = {
-        stiffness: 300,
-        damping: 30,
-        mass: 1,
-      };
-
-
+    const Spring_config = {
+      stiffness: 300,
+      damping: 30,
+      mass: 1,
+    };
     appTop.value = withSpring(event.translationY + appStoredTop.value, Spring_config);
     appLeft.value = withSpring(event.translationX + appStoredLeft.value, Spring_config);
   }

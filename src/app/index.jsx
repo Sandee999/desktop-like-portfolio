@@ -15,7 +15,7 @@ import useCssInterop from '@/hooks/useCssInterop';
 export default function RootLayoutWeb() {
   const { width, height } = useWindowDimensions();
   const [hideBottomBar, setHideBottomBar] = useState(false);
-  const { appsData, setAppsData, authorData } = useGlobalContext();
+  const { appsData, authorData } = useGlobalContext();
   const { fontsLoaded, fontError } = useLoadFonts();
   const cssLoaded = useCssInterop(); 
 
@@ -53,11 +53,11 @@ export default function RootLayoutWeb() {
       {/* Footer */}
       {!hideBottomBar &&
         <Animated.View entering={ZoomInDown.easing(Easing.ease)} exiting={ZoomOutDown.easing(Easing.ease)} className={`w-full h-16 z-20 flex-row justify-center items-center`}>
-          <Dock data={appsData} setData={setAppsData} />
+          <Dock />
           <StatusBar />
         </Animated.View>
       }
-      <RunApps appsData={appsData} setAppsData={setAppsData} />
+      <RunApps />
       {Platform.OS === 'web' && <FluidCursor />}
       <Image source={require('@/assets/wallpaper.jpg')} contentFit='fill' className={`w-full h-full absolute -z-50`} />
       <ExpoStatusBar hidden={true} />

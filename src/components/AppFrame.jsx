@@ -5,8 +5,8 @@ import Animated, { useSharedValue, withTiming, ZoomIn, ZoomOut } from 'react-nat
 import Application from './Application';
 import { BlurView } from 'expo-blur';
 
-export default function AppFrame({ appData, setAppsData }) {
-  const index = appData.id-1;
+export default function AppFrame({ appData }) {
+  const { appsData, setAppsData } = useGlobalContext();
   const { height } = useWindowDimensions();
   const appTop = useSharedValue(0);
 
@@ -16,9 +16,10 @@ export default function AppFrame({ appData, setAppsData }) {
     } else {
       appTop.value = withTiming(0);
     }
-  })
+  });
 
   const onClose = useMemo(() => () => setAppsData((prevData) => {
+    const index = appsData.indexOf(appData);
     const newData = [...prevData];
     newData[index].isActive = false;
     newData[index].isHidden = false;
@@ -26,6 +27,7 @@ export default function AppFrame({ appData, setAppsData }) {
   }), [appData]);
 
   const onHide = useMemo(() => () => setAppsData((prevData) => {
+    const index = appsData.indexOf(appData);
     const newData = [...prevData];
     newData[index].isHidden = true;
     return newData;
