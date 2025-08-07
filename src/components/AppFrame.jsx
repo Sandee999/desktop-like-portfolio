@@ -50,5 +50,5 @@ export default function AppFrame({ appData, setAppsData }) {
         <Application appData={appData} />
       </View>
     </Animated.View>
-  )
+  );
 }
