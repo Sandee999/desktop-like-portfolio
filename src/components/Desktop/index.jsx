@@ -34,7 +34,8 @@ export default function Desktop() {
   const { authorData, appsData, setAppsData, setChromeLink } = useGlobalContext();
   const [desktopSize, setDesktopSize] = useState(null);
   const files = [
-    { name: 'About Me', icon: require('@/assets/appIcons/googleChrome.png'), onPress: ()=>onPress('About Me', authorData, appsData, setAppsData, setChromeLink) },
+    { name: 'About Me', icon: require('@/assets/appIcons/googleChrome.png') },
+    { name: 'Resume.docx', icon: require('@/assets/other/desktopFilesIcon.png') },
   ]
 
   const fileIconSize = 40;
@@ -58,7 +59,7 @@ export default function Desktop() {
     <View onLayout={handleLayout} className="w-full h-full">
       {desktopSize && positions.length === files.length &&
         files.map((file, index) => (
-        <TouchableOpacity key={index} activeOpacity={0.8} onPress={file.onPress} className={`hover:bg-blue-700`}>
+        <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onPress(file.name, authorData, appsData, setAppsData, setChromeLink)} className={`hover:bg-blue-700`}>
           <View 
             style={{ position: 'absolute', top: positions[index].y, left: positions[index].x }} 
             className="px-1 py-2 justify-center items-center text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline"

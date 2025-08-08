@@ -6,7 +6,7 @@ import usePreventRightClick from '@/web-hooks/usePreventInspect';
 import { Platform } from 'react-native';
 
 export default function RootLayoutWeb() {
-  {Platform.OS === 'web' && usePreventRightClick();}
+  // {Platform.OS === 'web' && usePreventRightClick();}
 
   return (
     <GlobalContextProvider>

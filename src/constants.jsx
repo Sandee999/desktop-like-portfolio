@@ -5,6 +5,7 @@ export const AUTHOR_DATA = {
   linkedin: 'https://www.linkedin.com/in/saikrishna-siddu-3b8716256',
   email: 'saikrishnasiddu14@gmail.com',
   instagram: 'https://www.instagram.com/sai_krishna_siddu/',
+  resume: 'https://drive.google.com/file/d/1vX47lRo0Cgpu4I-8LjZaOn2SIUgCq9fI',
 };
 
 export const DEFAULT_APP_DATA = [
