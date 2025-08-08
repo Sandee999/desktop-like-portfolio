@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { Image } from 'expo-image';
-import { VOLUME_ICONS } from '@/constants';
 import { BlurView } from 'expo-blur';
 
 export default function StatusBar() {
   if(Platform.OS !== 'web') return null;
-  
+
+  const VOLUME_ICONS = [
+    require('@/assets/statusBar/mute.png'),
+    require('@/assets/statusBar/low-volume.png'),
+    require('@/assets/statusBar/high-volume.png'),
+  ];
   const [time, setTime] = useState(new Date());
   
   useEffect(() => {

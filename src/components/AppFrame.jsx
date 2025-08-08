@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import Animated, { useSharedValue, withTiming, ZoomIn, ZoomOut } from 'react-native-reanimated';
 import Application from './Application';
 import { BlurView } from 'expo-blur';
+import { useGlobalContext } from '@/context/GlobalContext';
 
 export default function AppFrame({ appData }) {
   const { appsData, setAppsData } = useGlobalContext();
@@ -34,8 +35,8 @@ export default function AppFrame({ appData }) {
   }), [appData]);
 
   return (
-    <Animated.View entering={ZoomIn} exiting={ZoomOut} style={{ top: appTop }} className={`absolute w-full h-full justify-center items-center bg-white`}>
-      <BlurView tint='dark' intensity={80} className={`w-full max-h-9 flex-1 flex-row ${!appData.isMaximized && 'rounded-t-xl'}`} >
+    <Animated.View entering={ZoomIn} exiting={ZoomOut} style={{ top: appTop }} className={`absolute w-full h-full justify-center items-center`}>
+      <BlurView intensity={20} experimentalBlurMethod='dimezisBlurView' className={`w-full max-h-9 flex-1 flex-row ${!appData.isMaximized && 'rounded-t-xl'}`} >
         <View className={`absolute w-16 mx-4 h-full z-30 flex-row justify-around items-center`}>
           <TouchableOpacity onPress={onClose} activeOpacity={0.5} className={`p-1`}>
             <Image source={require('@/assets/appBar/close.png')} contentFit='contain' className={`w-4 h-4`} />

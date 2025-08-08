@@ -21,7 +21,8 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.sandee_666.myPortfolio"
     },
     "web": {
       "favicon": "./src/assets/favicon.png",

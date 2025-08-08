@@ -5,7 +5,7 @@ const GlobalContext = createContext();
 
 export default function GlobalContextProvider({ children }) {
   const [appsData, setAppsData] = useState(DEFAULT_APP_DATA);
-  const [chromeLink, setChromeLink] = useState('https://sandee999.github.io/desktop-like-portfolio/');
+  const [chromeLink, setChromeLink] = useState(AUTHOR_DATA.aboutMe);
 
   const contextValues = { authorData: AUTHOR_DATA, appsData, setAppsData, chromeLink, setChromeLink };
   

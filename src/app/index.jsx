@@ -11,18 +11,14 @@ import useLoadFonts from '@/hooks/useLoadFonts';
 import Desktop from '@/components/Desktop';
 import RunApps from '@/components/RunApps';
 import useCssInterop from '@/hooks/useCssInterop';
+import DesktopTopBar from '@/components/DesktopTopBar';
 
 export default function RootLayoutWeb() {
   const { width, height } = useWindowDimensions();
-  const [hideBottomBar, setHideBottomBar] = useState(false);
   const { appsData, authorData } = useGlobalContext();
+  const hideBottomBar= appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
   const { fontsLoaded, fontError } = useLoadFonts();
   const cssLoaded = useCssInterop(); 
-
-  useEffect(() => {
-    const x = appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
-    setHideBottomBar(x);
-  }, [appsData]);
 
   if (!fontsLoaded || !cssLoaded) return (
     <View className={`w-full h-full justify-center items-center`}>
@@ -30,9 +26,13 @@ export default function RootLayoutWeb() {
     </View>
   );
 
-  if((width < 500 || height < 500) && Platform.OS === 'web') return (
+  if(fontError || ((width < 500 || height < 500) && Platform.OS === 'web')) return (
     <View className={`w-full h-full justify-center items-center`}>
-      <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>This website is not supported on Screen Screen Size.</Text>
+      {fontError ? 
+        <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>{fontError}</Text>
+        :
+        <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>This website is not supported on Screen Screen Size.</Text>
+      }
     </View>
   );
 
@@ -40,7 +40,7 @@ export default function RootLayoutWeb() {
     <View className={`flex-1 bg-transparent`}>
       {/* Header */}
       <View className={`w-full h-10 px-4 flex-row items-center`}>
-        <Text selectable={false} className={`text-base font-poppinsMedium text-white`}>Contact</Text>
+        <DesktopTopBar />
       </View>
       {/* Body */}
       <View className={`flex-1 justify-center items-center`}>

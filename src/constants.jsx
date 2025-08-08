@@ -1,20 +1,21 @@
 export const AUTHOR_DATA = {
   name: 'Siddu',
-  github: 'https://github.com/siddu2317',
+  aboutMe: 'https://visiochroma.github.io/About-me',
+  github: 'https://github.com/visiochroma',
   linkedin: 'https://www.linkedin.com/in/saikrishna-siddu-3b8716256',
   email: 'saikrishnasiddu14@gmail.com',
   instagram: 'https://www.instagram.com/sai_krishna_siddu/',
 };
 
 export const DEFAULT_APP_DATA = [
-  { id: 1, title: 'Contacts', icon: require('@/assets/DockIcons/contacts.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 2, title: 'Files', icon: require('@/assets/DockIcons/files.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 3, title: 'Figma', icon: require('@/assets/DockIcons/figma.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 4, title: 'Word', icon: require('@/assets/DockIcons/word.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 5, title: 'Excel', icon: require('@/assets/DockIcons/excel.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 6, title: 'PowerPoint', icon: require('@/assets/DockIcons/powerpoint.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 7, title: 'Spotify', icon: require('@/assets/DockIcons/spotify.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 8, title: 'Chrome', icon: require('@/assets/DockIcons/googleChrome.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 1, title: 'Contacts', icon: require('@/assets/appIcons/contacts.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 2, title: 'Files', icon: require('@/assets/appIcons/files.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 3, title: 'Figma', icon: require('@/assets/appIcons/figma.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 4, title: 'Word', icon: require('@/assets/appIcons/word.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 5, title: 'Excel', icon: require('@/assets/appIcons/excel.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 6, title: 'PowerPoint', icon: require('@/assets/appIcons/powerpoint.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 7, title: 'Spotify', icon: require('@/assets/appIcons/spotify.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { id: 8, title: 'Chrome', icon: require('@/assets/appIcons/googleChrome.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
 ];
 
 /*
@@ -58,10 +59,4 @@ export const FLUID_CURSOR_CONFIG = {
   SPLAT_FORCE: 6000,
   SHADING: true,
   COLOR_UPDATE_SPEED: 1,
-};  
-
-export const VOLUME_ICONS = [
-  require('@/assets/statusBar/mute.png'),
-  require('@/assets/statusBar/low-volume.png'),
-  require('@/assets/statusBar/high-volume.png'),
-];
+};
