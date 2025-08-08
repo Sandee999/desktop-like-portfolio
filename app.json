@@ -32,9 +32,6 @@
     "plugins": [
       "expo-router"
     ],
-    "extra": {
-      "router": {}
-    },
     "experiments": {
       "baseUrl": "/desktop-like-portfolio"
     }
