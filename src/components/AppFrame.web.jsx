@@ -139,7 +139,7 @@ export default function AppFrame({ appData }) {
             </GestureDetector>
           </GestureHandlerRootView>
         </BlurView>
-        <View className={`w-full h-full flex-1 bg-white ${!appData.isMaximized && 'rounded-b-xl'}`}>
+        <View className={`w-full h-full flex-1 ${!appData.isMaximized && 'rounded-b-xl'}`}>
           <Application appData={appData} />
         </View>
       </Animated.View>

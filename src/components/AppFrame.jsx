@@ -49,7 +49,7 @@ export default function AppFrame({ appData }) {
           <Text selectable={false} className={`text-base font-poppinsMedium text-white`}>{appData.title}</Text>
         </View>
       </BlurView>
-      <View className={`w-full h-full flex-1 bg-white ${!appData.isMaximized && 'rounded-b-xl'}`}>
+      <View className={`w-full h-full flex-1 ${!appData.isMaximized && 'rounded-b-xl'}`}>
         <Application appData={appData} />
       </View>
     </Animated.View>

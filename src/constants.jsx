@@ -1,5 +1,7 @@
 export const AUTHOR_DATA = {
   name: 'Siddu',
+  phoneNo: '+91 9876543210',
+  email: 'saikrishnasiddu14@gmail.com',
   aboutMe: 'https://visiochroma.github.io/About-me',
   github: 'https://github.com/visiochroma',
   linkedin: 'https://www.linkedin.com/in/saikrishna-siddu-3b8716256',

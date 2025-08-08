@@ -10,7 +10,7 @@ export default function Chrome({ appData }) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <View className={`w-full h-full`}>
+    <View className={`w-full h-full bg-white`}>
       <View className={`w-full h-8 px-2 gap-2 flex-row items-center shadow-[0_2px_2px_rgba(0,0,0,0.03)]`}>
         <Link href={chromeLink} target='_blank' className={`w-4 h-4 items-center justify-center`}>
             <Image source={require('@/assets/other/redirect.png')} contentFit='contain' className={`absolute w-full h-full`} />

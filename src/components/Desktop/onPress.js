@@ -28,7 +28,7 @@ function forAboutMe(authorData, setAppsData, setChromeLink) {
 }
 
 function forResume(setAppsData) {
-    setAppsData((prevData) => {
+  setAppsData((prevData) => {
     const index = prevData.findIndex((data) => data.title === 'Word');
     const newData = [...prevData];
     if(!prevData[index].isActive){

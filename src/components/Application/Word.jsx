@@ -9,7 +9,7 @@ export default function Word({ appData }) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <View className="w-full h-full justify-center items-center">
+    <View className="w-full h-full justify-center items-center bg-white">
       {/* Loader overlay */}
       {loading && (
         <ActivityIndicator size="large" color="black" style={{ position: 'absolute' }} />
