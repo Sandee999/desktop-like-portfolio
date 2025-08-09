@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { Image } from 'expo-image';
 import { useGlobalContext } from '@/context/GlobalContext';
-import onPress from './onPress';
-import { AUTHOR_DATA } from '@/constants';
+import onDesktopIconPress from '@/util/onDesktopIconPress';
+import { AUTHOR_DATA, DESKTOP_FILES } from '@/constants';
 
 function generateNonOverlappingPositions(width, height, iconWidth, iconHeight, count, padding = 10, maxTries = 1000) {
   const positions = [];
@@ -32,12 +32,9 @@ function generateNonOverlappingPositions(width, height, iconWidth, iconHeight, c
 }
 
 export default function Desktop() {
-  const { appsData, setAppsData, setChromeLink } = useGlobalContext();
+  const { appsData, setAppsData, setChromeLink, setOpenFile } = useGlobalContext();
   const [desktopSize, setDesktopSize] = useState(null);
-  const files = [
-    { name: 'About Me', icon: require('@/assets/appIcons/googleChrome.png') },
-    { name: 'Resume.docx', icon: require('@/assets/other/desktopFilesIcon.png') },
-  ]
+  const files = DESKTOP_FILES;
 
   const fileIconSize = 40;
   const padding = 20;
@@ -60,12 +57,12 @@ export default function Desktop() {
     <View onLayout={handleLayout} className="w-full h-full">
       {desktopSize && positions.length === files.length &&
         files.map((file, index) => (
-        <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onPress(file.name, AUTHOR_DATA, appsData, setAppsData, setChromeLink)} className={`hover:bg-blue-700`}>
+        <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onDesktopIconPress({ file, authorData: AUTHOR_DATA, setAppsData, setChromeLink, setOpenFile })} className={`hover:bg-blue-700`}>
           <View 
             style={{ position: 'absolute', top: positions[index].y, left: positions[index].x }} 
             className="px-1 py-2 justify-center items-center text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline"
           >
-            <Image source={file.icon} style={{ width: fileIconSize, height: fileIconSize }} contentFit="contain"/>
+            <Image source={file.icon || require('@/assets/appIcons/desktopFolderIcon.png')} style={{ width: fileIconSize, height: fileIconSize }} contentFit="contain"/>
           <Text selectable={false} className="text-xs font-poppinsRegular text-inherit">{file.name}</Text>
           </View>
         </TouchableOpacity>

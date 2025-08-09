@@ -1,5 +1,5 @@
 import { ActivityIndicator, Platform, Text, useWindowDimensions, View } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image } from 'expo-image';
 import Animated, { Easing, ZoomInDown, ZoomOutDown } from 'react-native-reanimated';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
@@ -16,10 +16,18 @@ import { AUTHOR_DATA } from '@/constants';
 
 export default function RootLayoutWeb() {
   const { width, height } = useWindowDimensions();
-  const { appsData } = useGlobalContext();
+  const { appsData, setOpenFile } = useGlobalContext();
   const hideBottomBar= appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
+  const filesAppIsActive = appsData.find((data) => data.title === 'Files').isActive;
   const { fontsLoaded, fontError } = useLoadFonts();
   const cssLoaded = useCssInterop(); 
+  
+  // Reset open file
+  useEffect(() => {
+    if(!filesAppIsActive){
+      setOpenFile('');
+    }
+  }, [filesAppIsActive]);
 
   if (!fontsLoaded || !cssLoaded) return (
     <View className={`w-full h-full justify-center items-center`}>
@@ -27,12 +35,12 @@ export default function RootLayoutWeb() {
     </View>
   );
 
-  if(fontError || ((width < 500 || height < 500) && Platform.OS === 'web')) return (
+  if(fontError || width < height) return (
     <View className={`w-full h-full justify-center items-center`}>
       {fontError ? 
         <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>{fontError}</Text>
         :
-        <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>This website is not supported on Screen Screen Size.</Text>
+        <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>This website is not supported on Portrait mode.</Text>
       }
     </View>
   );

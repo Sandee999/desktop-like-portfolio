@@ -9,7 +9,7 @@ export default function Dock() {
 
   if(Platform.OS === 'web') return (
     <BlurView intensity={20} className={`p-2 flex-row rounded-2xl shadow-xl`}>
-      {appsData.map((value) => <DockCard key={value.id} appData={value} /> )}
+      {appsData.map((value) => <DockCard key={value.title} appData={value} /> )}
     </BlurView>
   );
 
@@ -17,7 +17,7 @@ export default function Dock() {
     <BlurView intensity={10} experimentalBlurMethod='dimezisBlurView' className={`p-2 rounded-2xl shadow-xl`}>
       <FlatList
         data={appsData}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.title}
         horizontal
         renderItem={({ item }) => (
           <DockCard appData={item} />

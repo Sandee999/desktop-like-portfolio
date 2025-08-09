@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useGlobalContext } from '@/context/GlobalContext';
 import { AUTHOR_DATA } from '@/constants';
@@ -6,7 +6,7 @@ import { AUTHOR_DATA } from '@/constants';
 export default function DesktopTopBar() {
   const { setAppsData } = useGlobalContext();
 
-  onPressContact = () => {
+  onPress = () => {
     setAppsData((prevData) => {
       const index = prevData.findIndex((data) => data.title === 'Contacts');
       const newData = [...prevData];
@@ -23,11 +23,15 @@ export default function DesktopTopBar() {
 
   return (
     <>
-      <Text selectable={false} className={`px-2 py-1 text-sm font-albertThinItalic text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline`}>
-        {AUTHOR_DATA.name}'s Portfolio
-      </Text>
-      <TouchableOpacity activeOpacity={0.7} onPress={onPressContact}>
-        <Text selectable={false} className={`px-2 py-1 text-base font-albertMedium text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline`}>Contact</Text>
+      <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+        <Text selectable={false} className={`px-2 py-1 text-sm font-albertThinItalic text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline`}>
+          {AUTHOR_DATA.name}'s Portfolio
+        </Text>  
+      </TouchableOpacity>
+      <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+        <Text selectable={false} className={`px-2 py-1 text-base font-albertMedium text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline`}>
+          Contact
+        </Text>
       </TouchableOpacity>
     </>
   );

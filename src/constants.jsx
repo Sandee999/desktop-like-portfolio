@@ -11,14 +11,36 @@ export const AUTHOR_DATA = {
 };
 
 export const DEFAULT_APP_DATA = [
-  { id: 1, title: 'Contacts', icon: require('@/assets/appIcons/contacts.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 2, title: 'Files', icon: require('@/assets/appIcons/files.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 3, title: 'Figma', icon: require('@/assets/appIcons/figma.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 4, title: 'Word', icon: require('@/assets/appIcons/word.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 5, title: 'Excel', icon: require('@/assets/appIcons/excel.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 6, title: 'PowerPoint', icon: require('@/assets/appIcons/powerpoint.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 7, title: 'Spotify', icon: require('@/assets/appIcons/spotify.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { id: 8, title: 'Chrome', icon: require('@/assets/appIcons/googleChrome.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Contacts', icon: require('@/assets/appIcons/contacts.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Files', icon: require('@/assets/appIcons/files.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Figma', icon: require('@/assets/appIcons/figma.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Word', icon: require('@/assets/appIcons/word.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Spotify', icon: require('@/assets/appIcons/spotify.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Chrome', icon: require('@/assets/appIcons/googleChrome.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+];
+
+export const PROJECTS_DATA = [
+  { name: 'Project 1', description: 'Project 1 description', children: [
+    { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
+    { name: 'Readme', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/README.md' },
+    { name: 'License', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/LICENSE' },
+  ]},
+  { name: 'Project 2', description: 'Project 2 description', children: [
+    { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
+    { name: 'Readme', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/README.md' },
+    { name: 'License', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/LICENSE' },
+  ]},
+  { name: 'Project 3', description: 'Project 3 description', children: [
+    { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
+    { name: 'Readme', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/README.md' },
+    { name: 'License', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/LICENSE' },
+  ]},
+];
+
+export const DESKTOP_FILES = [
+  { name: 'About Me', icon: require('@/assets/appIcons/googleChrome.png') },
+  { name: 'Resume.docx', icon: require('@/assets/appIcons/desktopFilesIcon.png') },
+  ...PROJECTS_DATA
 ];
 
 /*

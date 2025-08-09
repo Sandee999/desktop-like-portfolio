@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useGlobalContext } from '@/context/GlobalContext';
+import { BlurView } from 'expo-blur';
 
 export default function DockCard({ appData }) {
   const { appsData, setAppsData } = useGlobalContext();
@@ -57,7 +58,7 @@ export default function DockCard({ appData }) {
             <View className={`absolute w-16 h-16 -z-10`} />
           </GestureDetector>
           {appData.isActive && appData.zIndex !== 50 && <View className={`absolute -bottom-1 w-1 h-1 rounded-full bg-white/70`} />}
-          {appData.isActive && appData.zIndex === 50 && <View className={`absolute w-10 h-10 -z-10 rounded-xl shadow`} />}
+          {appData.isActive && appData.zIndex === 50 && <BlurView intensity={20} className={`absolute w-10 h-10 -z-10 rounded-xl shadow`} />}
         </Animated.View>
     </GestureHandlerRootView>
   );

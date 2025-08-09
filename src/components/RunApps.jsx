@@ -9,7 +9,7 @@ export default function RunApps() {
 
   return (
     <View className={`absolute`}>
-      {(runningApps).map((app) => <AppFrame key={app.id} appData={app} />)}
+      {(runningApps).map((app) => <AppFrame key={app.title} appData={app} />)}
     </View>
   );
 }

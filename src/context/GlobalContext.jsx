@@ -6,8 +6,9 @@ const GlobalContext = createContext();
 export default function GlobalContextProvider({ children }) {
   const [appsData, setAppsData] = useState(DEFAULT_APP_DATA);
   const [chromeLink, setChromeLink] = useState(AUTHOR_DATA.aboutMe);
+  const [openFile, setOpenFile] = useState('');
 
-  const contextValues = { appsData, setAppsData, chromeLink, setChromeLink };
+  const contextValues = { appsData, setAppsData, chromeLink, setChromeLink, openFile, setOpenFile };
   
   return (
     <GlobalContext.Provider value={contextValues}>

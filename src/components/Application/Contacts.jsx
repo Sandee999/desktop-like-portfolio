@@ -15,9 +15,9 @@ function ContactView({ href, text, imageSource }) {
   );
 }
 
-export default function Contacts() {
+export default function Contacts({ appData }) {
   return (
-    <BlurView intensity={50} className={`w-full h-full justify-center items-center bg-transparent`}>
+    <BlurView intensity={50} className={`w-full h-full justify-center items-center ${!appData.isMaximized && 'rounded-b-xl'}`}>
       <View className={`px-6 py-4 gap-4 rounded-lg bg-black/90`}>
         <ContactView href={AUTHOR_DATA.aboutMe} text={AUTHOR_DATA.name} imageSource={require('@/assets/other/user.png')} />
         <ContactView href={`tel:${AUTHOR_DATA.phoneNo}`} text={AUTHOR_DATA.phoneNo} imageSource={require('@/assets/other/phone.png')} />

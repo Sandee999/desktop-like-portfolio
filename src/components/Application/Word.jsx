@@ -8,7 +8,7 @@ export default function Word({ appData }) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <View className="w-full h-full justify-center items-center bg-white">
+    <View className={`w-full h-full justify-center items-center bg-white ${!appData.isMaximized && 'rounded-b-xl'}`}>
       {/* Loader overlay */}
       {loading && (
         <ActivityIndicator size="large" color="black" style={{ position: 'absolute' }} />
@@ -17,14 +17,14 @@ export default function Word({ appData }) {
       {Platform.OS === 'web' ? (
         <iframe
           src={link}
-          className={`w-full h-full ${appData.isMaximized ? 'rounded-none' : 'rounded-b-xl'}`}
+          className={`w-full h-full ${!appData.isMaximized && 'rounded-b-xl'}`}
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           onLoad={() => setLoading(false)}
         />
       ) : (
         <WebView
           source={{ uri: link }}
-          style={{ flex: 1 }}
+          className={`w-full h-full ${!appData.isMaximized && 'rounded-b-xl'}`}
           onLoadEnd={() => setLoading(false)}
         />
       )}
