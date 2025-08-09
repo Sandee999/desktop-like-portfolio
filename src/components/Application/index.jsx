@@ -10,7 +10,7 @@ export default function Application({ appData }) {
   if(appData.title == 'Word') return <Word appData={appData} />;
   if(appData.title == 'Contacts') return <Contacts appData={appData} />;
   return (
-    <View className={`w-full h-full justify-center items-center`}>
+    <View className={`w-full h-full justify-center items-center bg-white`}>
       <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>Application Under Development</Text>
     </View>
   );

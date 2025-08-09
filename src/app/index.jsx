@@ -1,5 +1,5 @@
 import { ActivityIndicator, Platform, Text, useWindowDimensions, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Image } from 'expo-image';
 import Animated, { Easing, ZoomInDown, ZoomOutDown } from 'react-native-reanimated';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
@@ -12,10 +12,11 @@ import Desktop from '@/components/Desktop';
 import RunApps from '@/components/RunApps';
 import useCssInterop from '@/hooks/useCssInterop';
 import DesktopTopBar from '@/components/DesktopTopBar';
+import { AUTHOR_DATA } from '@/constants';
 
 export default function RootLayoutWeb() {
   const { width, height } = useWindowDimensions();
-  const { appsData, authorData } = useGlobalContext();
+  const { appsData } = useGlobalContext();
   const hideBottomBar= appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
   const { fontsLoaded, fontError } = useLoadFonts();
   const cssLoaded = useCssInterop(); 
@@ -46,7 +47,7 @@ export default function RootLayoutWeb() {
       <View className={`flex-1 justify-center items-center`}>
         <View className={`absolute items-center`}>
           <Text selectable={false} className={`text-4xl font-albertSemiBold text-white`}>Beyond Syntax</Text>
-          <Text selectable={false} className={`text-xl font-albertMedium text-white`}>This is {authorData.name}.</Text>
+          <Text selectable={false} className={`text-xl font-albertMedium text-white`}>This is {AUTHOR_DATA.name}.</Text>
         </View>
         <Desktop />
       </View>

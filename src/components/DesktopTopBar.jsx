@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useGlobalContext } from '@/context/GlobalContext';
+import { AUTHOR_DATA } from '@/constants';
 
 export default function DesktopTopBar() {
-  const { authorData, setAppsData } = useGlobalContext();
+  const { setAppsData } = useGlobalContext();
 
   onPressContact = () => {
     setAppsData((prevData) => {
@@ -23,7 +24,7 @@ export default function DesktopTopBar() {
   return (
     <>
       <Text selectable={false} className={`px-2 py-1 text-sm font-albertThinItalic text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline`}>
-        {authorData.name}'s Portfolio
+        {AUTHOR_DATA.name}'s Portfolio
       </Text>
       <TouchableOpacity activeOpacity={0.7} onPress={onPressContact}>
         <Text selectable={false} className={`px-2 py-1 text-base font-albertMedium text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline`}>Contact</Text>

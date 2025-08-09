@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import { Image } from 'expo-image';
 import { useGlobalContext } from '@/context/GlobalContext';
 import onPress from './onPress';
+import { AUTHOR_DATA } from '@/constants';
 
 function generateNonOverlappingPositions(width, height, iconWidth, iconHeight, count, padding = 10, maxTries = 1000) {
   const positions = [];
@@ -31,7 +32,7 @@ function generateNonOverlappingPositions(width, height, iconWidth, iconHeight, c
 }
 
 export default function Desktop() {
-  const { authorData, appsData, setAppsData, setChromeLink } = useGlobalContext();
+  const { appsData, setAppsData, setChromeLink } = useGlobalContext();
   const [desktopSize, setDesktopSize] = useState(null);
   const files = [
     { name: 'About Me', icon: require('@/assets/appIcons/googleChrome.png') },
@@ -59,7 +60,7 @@ export default function Desktop() {
     <View onLayout={handleLayout} className="w-full h-full">
       {desktopSize && positions.length === files.length &&
         files.map((file, index) => (
-        <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onPress(file.name, authorData, appsData, setAppsData, setChromeLink)} className={`hover:bg-blue-700`}>
+        <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onPress(file.name, AUTHOR_DATA, appsData, setAppsData, setChromeLink)} className={`hover:bg-blue-700`}>
           <View 
             style={{ position: 'absolute', top: positions[index].y, left: positions[index].x }} 
             className="px-1 py-2 justify-center items-center text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline"

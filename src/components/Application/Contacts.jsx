@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { useGlobalContext } from '@/context/GlobalContext';
 import { BlurView } from 'expo-blur';
 import { Link } from 'expo-router';
 import { Image } from 'expo-image';
+import { AUTHOR_DATA } from '@/constants';
 
 function ContactView({ href, text, imageSource }) {
 
@@ -16,17 +16,16 @@ function ContactView({ href, text, imageSource }) {
 }
 
 export default function Contacts() {
-  const { authorData } = useGlobalContext();  console.log(authorData);
   return (
     <BlurView intensity={50} className={`w-full h-full justify-center items-center bg-transparent`}>
       <View className={`px-6 py-4 gap-4 rounded-lg bg-black/90`}>
-        <ContactView href={authorData.aboutMe} text={authorData.name} imageSource={require('@/assets/other/user.png')} />
-        <ContactView href={`tel:${authorData.phoneNo}`} text={authorData.phoneNo} imageSource={require('@/assets/other/phone.png')} />
-        <ContactView href={`mailto:${authorData.email}`} text={authorData.email} imageSource={require('@/assets/other/email.png')} />
-        <ContactView href={authorData.github} text={'Github'} imageSource={require('@/assets/other/github.png')} />
+        <ContactView href={AUTHOR_DATA.aboutMe} text={AUTHOR_DATA.name} imageSource={require('@/assets/other/user.png')} />
+        <ContactView href={`tel:${AUTHOR_DATA.phoneNo}`} text={AUTHOR_DATA.phoneNo} imageSource={require('@/assets/other/phone.png')} />
+        <ContactView href={`mailto:${AUTHOR_DATA.email}`} text={AUTHOR_DATA.email} imageSource={require('@/assets/other/email.png')} />
+        <ContactView href={AUTHOR_DATA.github} text={'Github'} imageSource={require('@/assets/other/github.png')} />
         <View className={`flex-row w-full justify-evenly items-center gap-2`}>
-          <ContactView href={authorData.linkedin} text={'Linkedin'} imageSource={require('@/assets/other/linkedin.png')} />
-          <ContactView href={authorData.instagram} text={'Instagram'} imageSource={require('@/assets/other/instagram.png')} />
+          <ContactView href={AUTHOR_DATA.linkedin} text={'Linkedin'} imageSource={require('@/assets/other/linkedin.png')} />
+          <ContactView href={AUTHOR_DATA.instagram} text={'Instagram'} imageSource={require('@/assets/other/instagram.png')} />
         </View>
       </View>
     </BlurView>

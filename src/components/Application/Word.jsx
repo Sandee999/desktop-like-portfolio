@@ -1,11 +1,10 @@
 import { View, Platform, ActivityIndicator } from 'react-native';
 import React, { useState } from 'react';
 import WebView from 'react-native-webview';
-import { useGlobalContext } from '@/context/GlobalContext';
+import { AUTHOR_DATA } from '@/constants';
 
 export default function Word({ appData }) {
-  const { authorData } = useGlobalContext();
-  const link = authorData.resume + '/preview';
+  const link = AUTHOR_DATA.resume + '/preview';
   const [loading, setLoading] = useState(true);
 
   return (
