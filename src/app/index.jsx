@@ -16,18 +16,11 @@ import { AUTHOR_DATA } from '@/constants';
 
 export default function RootLayoutWeb() {
   const { width, height } = useWindowDimensions();
-  const { appsData, setOpenFile } = useGlobalContext();
+  const { appsData } = useGlobalContext();
   const hideBottomBar= appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
-  const filesAppIsActive = appsData.find((data) => data.title === 'Files').isActive;
   const { fontsLoaded, fontError } = useLoadFonts();
   const cssLoaded = useCssInterop(); 
   
-  // Reset open file
-  useEffect(() => {
-    if(!filesAppIsActive){
-      setOpenFile('');
-    }
-  }, [filesAppIsActive]);
 
   if (!fontsLoaded || !cssLoaded) return (
     <View className={`w-full h-full justify-center items-center`}>

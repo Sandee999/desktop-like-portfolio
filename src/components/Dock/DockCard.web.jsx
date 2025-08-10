@@ -5,6 +5,7 @@ import Animated, { useSharedValue, withSpring } from 'react-native-reanimated';
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useGlobalContext } from '@/context/GlobalContext';
 import { BlurView } from 'expo-blur';
+import getIcon from '@/util/getIcon';
 
 export default function DockCard({ appData }) {
   const { appsData, setAppsData } = useGlobalContext();
@@ -51,7 +52,7 @@ export default function DockCard({ appData }) {
         <Animated.View style={{ transform: [{ scale: scale }, { translateY: translateY }] }} className={`w-8 h-8 mx-2 justify-center items-center`}>
           <GestureDetector gesture={innerHover}>
             <TouchableOpacity activeOpacity={0.9} onPress={onPress} className={`w-full h-full`}>
-              <Image source={appData.icon} className={`w-full h-full`} contentFit='contain' />
+              <Image source={getIcon(appData.title)} className={`w-full h-full`} contentFit='contain' />
             </TouchableOpacity>
           </GestureDetector>
           <GestureDetector gesture={outerHover}>

@@ -1,39 +1,43 @@
+import getGithubRawLink from '@/util/getGithubRawLink';
+
 export const AUTHOR_DATA = {
-  name: 'Siddu',
-  phoneNo: '+91 9876543210',
-  email: 'saikrishnasiddu14@gmail.com',
+  name: 'Sandeep',
+  fullName: 'Talatam Venkata Sandeep',
+  phoneNo: '+91 *******520',
+  email: 'venkatasandeeptalatam@gmail.com',
   aboutMe: 'https://visiochroma.github.io/About-me',
-  github: 'https://github.com/visiochroma',
-  linkedin: 'https://www.linkedin.com/in/saikrishna-siddu-3b8716256',
-  email: 'saikrishnasiddu14@gmail.com',
-  instagram: 'https://www.instagram.com/sai_krishna_siddu/',
+  github: 'https://github.com/Sandee999',
+  linkedin: 'https://www.linkedin.com/in/Sandee999',
+  instagram: '',
   resume: 'https://drive.google.com/file/d/1vX47lRo0Cgpu4I-8LjZaOn2SIUgCq9fI',
 };
 
 export const DEFAULT_APP_DATA = [
-  { title: 'Contacts', icon: require('@/assets/appIcons/contacts.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { title: 'Files', icon: require('@/assets/appIcons/files.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { title: 'Figma', icon: require('@/assets/appIcons/figma.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { title: 'Word', icon: require('@/assets/appIcons/word.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { title: 'Spotify', icon: require('@/assets/appIcons/spotify.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
-  { title: 'Chrome', icon: require('@/assets/appIcons/googleChrome.png'), isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Contacts', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Files', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Figma', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Word', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Notepad', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'VS Code', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Spotify', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
+  { title: 'Chrome', isActive: false, isMaximized: false, isHidden: false, zIndex: 40 },
 ];
 
 export const PROJECTS_DATA = [
-  { name: 'Project 1', description: 'Project 1 description', children: [
+  { name: 'Project 1 Portfolio', description: 'Project 1 description', children: [
     { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
-    { name: 'Readme', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/README.md' },
-    { name: 'License', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/LICENSE' },
+    { name: 'Readme', url: getGithubRawLink({ username: 'Sandee999', repoName: 'desktop-like-portfolio', fileName: 'README.md', branch: 'main' }) },
+    { name: 'License', url: getGithubRawLink({ username: 'Sandee999', repoName: 'desktop-like-portfolio', fileName: 'LICENSE', branch: 'main' }) },
   ]},
-  { name: 'Project 2', description: 'Project 2 description', children: [
-    { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
-    { name: 'Readme', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/README.md' },
-    { name: 'License', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/LICENSE' },
+  { name: 'Project 2 Sehari', description: 'Project 1 description', children: [
+    { name: 'Github', url: 'https://github.com/Sandee999/Sehari' },
+    { name: 'Readme', url: getGithubRawLink({ username: 'Sandee999', repoName: 'Sehari', fileName: 'README.md', branch: 'main' }) },
+    { name: 'License', url: getGithubRawLink({ username: 'Sandee999', repoName: 'Sehari', fileName: 'LICENSE', branch: 'main' }) },
   ]},
-  { name: 'Project 3', description: 'Project 3 description', children: [
-    { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
-    { name: 'Readme', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/README.md' },
-    { name: 'License', url: 'https://raw.githubusercontent.com/Sandee999/desktop-like-portfolio/main/LICENSE' },
+  { name: 'Project 3 SmartTrack', description: 'Project 1 description', children: [
+    { name: 'Github', url: 'https://github.com/Sandee999/Student-SmartTrack' },
+    { name: 'Readme', url: getGithubRawLink({ username: 'Sandee999', repoName: 'Student-SmartTrack', fileName: 'README.md', branch: 'main' }) },
+    { name: 'License', url: getGithubRawLink({ username: 'Sandee999', repoName: 'Student-SmartTrack', fileName: 'LICENSE', branch: 'main' }) },
   ]},
 ];
 

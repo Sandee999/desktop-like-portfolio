@@ -1,31 +1,43 @@
-import { router } from "expo-router";
+import { openURL } from "expo-linking"; 
 
-export default function onDesktopIconPress({ file, authorData, setAppsData, setChromeLink, setOpenFile }) {
+export default function onDesktopIconPress({ file, authorData, globalContext }) {
   let appName = null;
   
+  if(file.name.endsWith('.com')) {
+    openURL(file.url);
+    return;
+  }
+
   switch(file.name) {
     case 'About Me':
-      setChromeLink(authorData.aboutMe);
+      globalContext.setChromeLink(authorData.aboutMe);
       appName = 'Chrome';
       break;
     case 'Resume.docx':
       appName = 'Word';
       break;
     case 'Github':
-      router.navigate(file.url);
+      openURL(file.url);
       return;
     case 'Readme':
+      globalContext.setVscodeLink(file.url);
+      appName = 'VS Code';
+      break;
     case 'License':
-      // appName = 'Notepad';
-      return;
+      globalContext.setNotepadLink(file.url);
+      appName = 'Notepad';
+      break;
     default:
-      setOpenFile(file.name);
+      globalContext.setOpenFile(file.name);
       appName = 'Files';
       break;
   }
   
-  // Open App
-  setAppsData((prevData) => {
+  openApp(appName, globalContext);
+}
+
+function openApp(appName, globalContext) {
+  globalContext.setAppsData((prevData) => {
     const index = prevData.findIndex((data) => data.title === appName);
     const newData = [...prevData];
     if(!prevData[index].isActive){
