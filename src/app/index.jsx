@@ -13,14 +13,14 @@ import RunApps from '@/components/RunApps';
 import useCssInterop from '@/hooks/useCssInterop';
 import DesktopTopBar from '@/components/DesktopTopBar';
 import { AUTHOR_DATA } from '@/constants';
+import ResetClosedApps from '@/components/ResetClosedApps';
 
 export default function RootLayoutWeb() {
   const { width, height } = useWindowDimensions();
-  const { appsData } = useGlobalContext();
-  const hideBottomBar= appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
+  const globalContext = useGlobalContext();
+  const hideBottomBar= globalContext.appsData.some((data)=>(data.isActive && data.isMaximized && !data.isHidden));
   const { fontsLoaded, fontError } = useLoadFonts();
   const cssLoaded = useCssInterop(); 
-  
 
   if (!fontsLoaded || !cssLoaded) return (
     <View className={`w-full h-full justify-center items-center`}>
@@ -31,15 +31,15 @@ export default function RootLayoutWeb() {
   if(fontError || width < height) return (
     <View className={`w-full h-full justify-center items-center`}>
       {fontError ? 
-        <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>{fontError}</Text>
+        <Text selectable={false} className={`text-xl font-albertMedium text-black`}>{fontError}</Text>
         :
-        <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>This website is not supported on Portrait mode.</Text>
+        <Text selectable={false} className={`text-xl font-albertMedium text-black`}>This website is not supported on Portrait mode.</Text>
       }
     </View>
   );
 
   return (
-    <View className={`flex-1 bg-transparent`}>
+    <View className={`flex-1 bg-black`}>
       {/* Header */}
       <View className={`w-full h-10 px-4 flex-row items-center`}>
         <DesktopTopBar />
@@ -60,8 +60,12 @@ export default function RootLayoutWeb() {
         </Animated.View>
       }
       <RunApps />
+      <ResetClosedApps globalContext={globalContext} />
       {Platform.OS === 'web' && <FluidCursor />}
-      <Image source={require('@/assets/wallpaper.jpg')} contentFit='fill' className={`w-full h-full absolute -z-50`} />
+      {/* <Image source={require('@/assets/bg.avif')} contentFit='cover' className={`w-full h-full absolute -z-50`} /> */}
+      {/* {Array.from({ length: width/10 }).map((_,i)=>(
+        <View key={i} className={`absolute -z-50 w-0.5 h-0.5 bg-white`} style={{ top: Math.floor(Math.random() * height), left: Math.floor(Math.random() * width) }}/>
+      ))} */}
       <ExpoStatusBar hidden={true} />
     </View>
   );

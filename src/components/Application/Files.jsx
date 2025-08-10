@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import onDesktopIconPress from '@/util/onDesktopIconPress';
 import { useGlobalContext } from '@/context/GlobalContext';
 import { AUTHOR_DATA, DESKTOP_FILES } from '@/constants';
@@ -25,7 +25,7 @@ export default function Files({ appData }) {
           </TouchableOpacity>
         ))}
       </View>
-      <View className={`flex-1 h-full bg-white ${!appData.isMaximized && 'rounded-br-xl'}`}>
+      <ScrollView className={`flex-1 h-full bg-white ${!appData.isMaximized && 'rounded-br-xl'}`}>
         <View className={`p-3 gap-1 flex-row items-center`}>
           {globalContext.openFile &&
             <TouchableOpacity activeOpacity={0.8} onPress={() => globalContext.setOpenFile('')}>
@@ -50,7 +50,7 @@ export default function Files({ appData }) {
             </View>
           ))}
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }

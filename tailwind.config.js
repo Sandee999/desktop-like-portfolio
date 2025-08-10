@@ -9,26 +9,6 @@ module.exports = {
         "translucent": "hsla(0, 0%, 85%, 1)"
       },
       fontFamily: {
-        // Poppins Fonts
-        poppinsBlack: ["Poppins-Black", "sans-serif"],
-        poppinsBlackItalic: ["Poppins-BlackItalic", "sans-serif"],
-        poppinsBold: ["Poppins-Bold", "sans-serif"],
-        poppinsBoldItalic: ["Poppins-BoldItalic", "sans-serif"],
-        poppinsExtraBold: ["Poppins-ExtraBold", "sans-serif"],
-        poppinsExtraBoldItalic: ["Poppins-ExtraBoldItalic", "sans-serif"],
-        poppinsExtraLight: ["Poppins-ExtraLight", "sans-serif"],
-        poppinsExtraLightItalic: ["Poppins-ExtraLightItalic", "sans-serif"],
-        poppinsItalic: ["Poppins-Italic", "sans-serif"],
-        poppinsLight: ["Poppins-Light", "sans-serif"],
-        poppinsLightItalic: ["Poppins-LightItalic", "sans-serif"],
-        poppinsMedium: ["Poppins-Medium", "sans-serif"],
-        poppinsMediumItalic: ["Poppins-MediumItalic", "sans-serif"],
-        poppinsRegular: ["Poppins-Regular", "sans-serif"],
-        poppinsSemiBold: ["Poppins-SemiBold", "sans-serif"],
-        poppinsSemiBoldItalic: ["Poppins-SemiBoldItalic", "sans-serif"],
-        poppinsThin: ["Poppins-Thin", "sans-serif"],
-        poppinsThinItalic: ["Poppins-ThinItalic", "sans-serif"],
-
         // Albert Sans Fonts
         albertBlack: ["AlbertSans-Black", "sans-serif"],
         albertBlackItalic: ["AlbertSans-BlackItalic", "sans-serif"],

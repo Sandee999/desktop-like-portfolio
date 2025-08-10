@@ -27,8 +27,8 @@ export default function LicenseViewer() {
 
   if (content === '') {
     return (
-      <View className="flex-1 justify-center items-center bg-white">
-        <Text selectable={false} className="text-xl font-poppinsMedium text-black">
+      <View className="flex-1 justify-center items-center bg-white rounded-b-xl">
+        <Text selectable={false} className="text-xl font-albertMedium text-black">
           No content found
         </Text>
       </View>

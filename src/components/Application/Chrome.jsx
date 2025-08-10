@@ -16,7 +16,7 @@ export default function Chrome({ appData }) {
             <Image source={require('@/assets/other/redirect.png')} contentFit='contain' className={`absolute w-full h-full`} />
         </Link>
         <View className={`w-full h-7 flex-1 flex-row items-center justify-center bg-neutral-100 rounded-full`}>
-          <Text selectable={false} numberOfLines={1} className={`flex-1 px-3 text-sm lg:text-xs font-poppinsRegular text-black `} >{chromeLink}</Text>
+          <Text selectable={false} numberOfLines={1} className={`flex-1 px-3 text-sm lg:text-xs font-albertRegular text-black `} >{chromeLink}</Text>
         </View>
       </View>
       <View className={`flex-1 justify-center items-center`}>

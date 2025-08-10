@@ -54,7 +54,7 @@ export default function VScode() {
         multiline
       />
     </View>
-  )
+  );
 
   return(
     <ScrollView className={`w-full h-full px-3 bg-white`}>

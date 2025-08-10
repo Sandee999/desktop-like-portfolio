@@ -47,7 +47,7 @@ export default function Desktop() {
     setDesktopSize(layout);
 
     if (!iconPositionsRef.current) {
-      const positions = generateNonOverlappingPositions(layout.width, layout.height, fileIconSize, fileIconSize, files.length, padding);
+      const positions = generateNonOverlappingPositions(layout.width, layout.height, fileIconSize*2, fileIconSize*2, files.length, padding);
       iconPositionsRef.current = positions;
     }
   };
@@ -64,7 +64,7 @@ export default function Desktop() {
             className="px-1 py-2 justify-center items-center text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline"
           >
             <Image source={getIcon(file.name)} style={{ width: fileIconSize, height: fileIconSize }} contentFit="contain"/>
-          <Text selectable={false} style={{ width: fileIconSize*2 }} className="text-xs font-poppinsRegular text-inherit text-center">{file.name}</Text>
+          <Text selectable={false} style={{ width: fileIconSize*2 }} className="text-xs font-albertRegular text-inherit text-center">{file.name}</Text>
           </View>
         </TouchableOpacity>
       ))}

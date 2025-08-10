@@ -1,4 +1,6 @@
 export default function getIcon(name) {
+  if(name.endsWith('.com')) return require('@/assets/appIcons/googleChrome.png');
+
   switch(name){
     case 'Contacts': return require('@/assets/appIcons/contacts.png');
     case 'Files': return require('@/assets/appIcons/files.png');

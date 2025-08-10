@@ -17,7 +17,7 @@ export default function Application({ appData }) {
   if(appData.title == 'VS Code') return <VScode appData={appData} />;
   return (
     <View className={`w-full h-full justify-center items-center bg-white`}>
-      <Text selectable={false} className={`text-xl font-poppinsMedium text-black`}>Application Under Development</Text>
+      <Text selectable={false} className={`text-xl font-albertMedium text-black`}>Application Under Development</Text>
     </View>
   );
 }

@@ -28,6 +28,7 @@ export const PROJECTS_DATA = [
     { name: 'Github', url: 'https://github.com/Sandee999/desktop-like-portfolio' },
     { name: 'Readme', url: getGithubRawLink({ username: 'Sandee999', repoName: 'desktop-like-portfolio', fileName: 'README.md', branch: 'main' }) },
     { name: 'License', url: getGithubRawLink({ username: 'Sandee999', repoName: 'desktop-like-portfolio', fileName: 'LICENSE', branch: 'main' }) },
+    { name: 'Project.com', url: 'https://sandee999.github.io/desktop-like-portfolio' },
   ]},
   { name: 'Project 2 Sehari', description: 'Project 1 description', children: [
     { name: 'Github', url: 'https://github.com/Sandee999/Sehari' },

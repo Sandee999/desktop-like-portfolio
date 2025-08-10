@@ -5,12 +5,14 @@ import { BlurView } from "expo-blur";
 import { Platform } from "react-native";
 import WebView from "react-native-webview";
 
-export default function useCssInterop() {
-  if(Platform.OS === 'web') return true;
-  
+export default function useCssInterop() {  
   const [loadedCss, setLoadedCss] = useState(false);
 
   useEffect(() => {
+    if (Platform.OS === "web"){
+      setLoadedCss(true);
+      return;
+    }
     cssInterop(Image, { className: 'style' });
     cssInterop(ImageBackground, { className: 'style' });
     cssInterop(BlurView, { className: 'style' });

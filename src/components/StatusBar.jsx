@@ -29,7 +29,7 @@ export default function StatusBar() {
         <Image source={VOLUME_ICONS[2]} tintColor='white' contentFit='contain' className={`w-full h-full`} />
       </View>
       <View>
-        <Text selectable={false} className={`font-poppinsMedium text-white`}>{time.toTimeString().slice(0, 5)}</Text>
+        <Text selectable={false} className={`font-albertMedium text-white`}>{time.toTimeString().slice(0, 5)}</Text>
       </View>
     </BlurView>
   );

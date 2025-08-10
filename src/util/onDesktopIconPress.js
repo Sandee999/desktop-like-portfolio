@@ -4,7 +4,10 @@ export default function onDesktopIconPress({ file, authorData, globalContext }) 
   let appName = null;
   
   if(file.name.endsWith('.com')) {
-    openURL(file.url);
+    globalContext.setChromeLink(file.url);
+    appName = 'Chrome';
+    globalContext.appsData.find(app => app.title === appName).isMaximized = true;
+    openApp(appName, globalContext);
     return;
   }
 
