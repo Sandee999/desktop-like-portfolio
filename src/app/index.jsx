@@ -62,7 +62,7 @@ export default function RootLayoutWeb() {
       <RunApps />
       <ResetClosedApps globalContext={globalContext} />
       {Platform.OS === 'web' && <FluidCursor />}
-      {/* <Image source={require('@/assets/bg.avif')} contentFit='cover' className={`w-full h-full absolute -z-50`} /> */}
+      {/* <Image source={require('@/assets/wallpaper.jpg')} contentFit='cover' className={`w-full h-full absolute -z-50`} /> */}
       {/* {Array.from({ length: width/10 }).map((_,i)=>(
         <View key={i} className={`absolute -z-50 w-0.5 h-0.5 bg-white`} style={{ top: Math.floor(Math.random() * height), left: Math.floor(Math.random() * width) }}/>
       ))} */}
