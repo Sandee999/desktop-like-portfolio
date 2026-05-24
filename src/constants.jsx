@@ -45,7 +45,7 @@ export const PROJECTS_DATA = [
 export const DESKTOP_FILES = [
   { name: 'About Me', icon: require('@/assets/appIcons/googleChrome.png') },
   { name: 'Resume.docx', icon: require('@/assets/appIcons/desktopFilesIcon.png') },
-  ...PROJECTS_DATA
+  ...PROJECTS_DATA,
 ];
 
 /*

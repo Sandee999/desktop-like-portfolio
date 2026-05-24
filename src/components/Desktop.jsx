@@ -6,39 +6,15 @@ import onDesktopIconPress from '@/util/onDesktopIconPress';
 import { AUTHOR_DATA, DESKTOP_FILES } from '@/constants';
 import getIcon from '@/util/getIcon';
 
-function generateNonOverlappingPositions(width, height, iconWidth, iconHeight, count, padding = 10, maxTries = 1000) {
-  const positions = [];
-
-  let attempts = 0;
-  while (positions.length < count && attempts < maxTries) {
-    const x = Math.floor(Math.random() * (width - iconWidth - 2 * padding)) + padding;
-    const y = Math.floor(Math.random() * (height - iconHeight - 2 * padding)) + padding;
-
-    const overlaps = positions.some(pos => {
-      return !(
-        x + iconWidth + padding < pos.x || // to the left
-        x > pos.x + iconWidth + padding || // to the right
-        y + iconHeight + padding < pos.y || // above
-        y > pos.y + iconHeight + padding // below
-      );
-    });
-
-    if (!overlaps) {
-      positions.push({ x, y });
-    }
-    attempts++;
-  }
-
-  return positions;
-}
-
 export default function Desktop() {
   const globalContext = useGlobalContext();
   const [desktopSize, setDesktopSize] = useState(null);
   const files = DESKTOP_FILES;
 
   const fileIconSize = 40;
-  const padding = 20;
+  const verticalSpacing = 40; // space between icons vertically
+  const horizontalSpacing = 80; // space between columns
+  const padding = 10;
 
   const iconPositionsRef = useRef(null);
 
@@ -47,7 +23,20 @@ export default function Desktop() {
     setDesktopSize(layout);
 
     if (!iconPositionsRef.current) {
-      const positions = generateNonOverlappingPositions(layout.width, layout.height, fileIconSize*2, fileIconSize*2, files.length, padding);
+      const positions = [];
+      let x = padding;
+      let y = padding;
+
+      files.forEach(() => {
+        // If the next icon would go out of vertical bounds, start a new column
+        if (y + fileIconSize > layout.height - padding) {
+          x += horizontalSpacing;
+          y = padding;
+        }
+        positions.push({ x, y });
+        y += fileIconSize + verticalSpacing;
+      });
+
       iconPositionsRef.current = positions;
     }
   };
@@ -58,16 +47,18 @@ export default function Desktop() {
     <View onLayout={handleLayout} className="w-full h-full">
       {desktopSize && positions.length === files.length &&
         files.map((file, index) => (
-        <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onDesktopIconPress({ file, authorData: AUTHOR_DATA, globalContext })} className={`hover:bg-blue-700`}>
-          <View 
-            style={{ position: 'absolute', top: positions[index].y, left: positions[index].x }} 
-            className="px-1 py-2 justify-center items-center text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline"
-          >
-            <Image source={getIcon(file.name)} style={{ width: fileIconSize, height: fileIconSize }} contentFit="contain"/>
-          <Text selectable={false} style={{ width: fileIconSize*2 }} className="text-xs font-albertRegular text-inherit text-center">{file.name}</Text>
-          </View>
-        </TouchableOpacity>
-      ))}
+          <TouchableOpacity key={index} activeOpacity={0.8} onPress={()=>onDesktopIconPress({ file, authorData: AUTHOR_DATA, globalContext })}>
+            <View 
+              style={{ position: 'absolute', top: positions[index].y, left: positions[index].x }} 
+              className="px-1 py-2 justify-center items-center text-white border-2 border-transparent rounded-md hover:border-white hover:bg-black/80 hover:underline"
+            >
+              <Image source={getIcon(file.name)} style={{ width: fileIconSize, height: fileIconSize }} contentFit="contain"/>
+              <Text selectable={false} style={{ width: fileIconSize * 2 }} className="text-xs font-albertRegular text-inherit text-center">
+                {file.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        ))}
     </View>
   );
 }
