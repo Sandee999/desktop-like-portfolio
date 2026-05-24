@@ -1,7 +1,7 @@
 {
   "name": "portfolio_project",
   "version": "1.0.0",
-  "homepage": "https://Sandeep999.github.io/desktop-like-portfolio",
+  "homepage": "https://sandeep999.github.io/desktop-like-portfolio",
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
